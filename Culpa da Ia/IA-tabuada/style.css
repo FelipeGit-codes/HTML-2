@@ -1,0 +1,249 @@
+:root {
+    --bg-void: #050505;
+    --bg-panel: rgba(13, 13, 15, 0.85);
+    --bg-input: #121214;
+    
+    /* Cores de Elden Ring e Maliketh */
+    --gold-elden: #cda35f;
+    --gold-dark: #8c6d39;
+    --destined-red: #ff1a1a;
+    --destined-black: #000000;
+    --text-light: #ddddcc;
+    --text-muted: #888877;
+    
+    --font-serif: 'Cinzel', 'Georgia', serif;
+    --border-elden: 1px solid var(--gold-dark);
+    --shadow-destined: 0 0 20px rgba(255, 26, 26, 0.15);
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-void);
+    color: var(--text-light);
+    font-family: var(--font-serif);
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Canvas de Efeitos que cobre o fundo */
+#malikethCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none; /* Deixa cliques passarem para a interface */
+}
+
+/* Painel Principal de Menu do Jogo */
+.elden-container {
+    background-color: var(--bg-panel);
+    backdrop-filter: blur(8px);
+    width: 100%;
+    max-width: 500px;
+    padding: 3rem 2.5rem;
+    border: var(--border-elden);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), var(--shadow-destined);
+    z-index: 2;
+    position: relative;
+    border-radius: 2px;
+}
+
+/* Detalhes de Cantos Dourados Clássicos de RPG */
+.elden-container::before {
+    content: '';
+    position: absolute;
+    top: 5px; left: 5px; right: 5px; bottom: 5px;
+    border: 1px solid rgba(140, 109, 57, 0.2);
+    pointer-events: none;
+}
+
+.elden-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: var(--gold-elden);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+}
+
+.divider-gold {
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold-dark) 50%, transparent 100%);
+    margin-top: 1rem;
+}
+
+/* Formulário e Inputs */
+.elden-form-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.grid-inputs {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 1rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-size: 0.75rem;
+    color: var(--gold-elden);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+input[type="number"], select {
+    background-color: var(--bg-input);
+    border: 1px solid #333;
+    color: var(--text-light);
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+input[type="number"]:focus, select:focus {
+    border-color: var(--gold-elden);
+    box-shadow: 0 0 10px rgba(205, 163, 95, 0.2);
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23cda35f' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+/* Botões Estilo Interface Elden Ring */
+.button-group {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-elden {
+    padding: 1rem;
+    font-size: 0.95rem;
+    font-family: var(--font-serif);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    background: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    border: 1px solid var(--gold-dark);
+    color: var(--gold-elden);
+}
+
+.btn-primary:hover {
+    background-color: rgba(205, 163, 95, 0.1);
+    border-color: var(--gold-elden);
+    box-shadow: 0 0 15px rgba(205, 163, 95, 0.15);
+}
+
+.btn-secondary {
+    border: 1px solid #444;
+    color: var(--text-muted);
+}
+
+.btn-secondary:hover {
+    border-color: var(--text-light);
+    color: var(--text-light);
+}
+
+/* Tela de Resultados Escura com Animação Destined Death */
+.elden-result-section {
+    margin-top: 2.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.elden-result-section.active {
+    max-height: 450px;
+    overflow-y: auto;
+    border-top: 1px solid var(--gold-dark);
+    padding-top: 1.5rem;
+}
+
+.result-title {
+    color: var(--destined-red);
+    font-size: 1.3rem;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(255, 26, 26, 0.6);
+}
+
+.result-row {
+    display: flex;
+    justify-content: center;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(140, 109, 57, 0.1);
+    animation: bladeCut 0.4s ease forwards;
+    opacity: 0;
+}
+
+@keyframes bladeCut {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+        filter: drop-shadow(10px 0px 5px var(--destined-red));
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.error-message {
+    color: var(--destined-red);
+    text-align: center;
+    font-size: 1rem;
+    animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}

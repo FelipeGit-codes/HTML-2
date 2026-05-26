@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elden Ring: Tabuada da Morte Destinada</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="malikethCanvas"></canvas>
+
+    <main class="elden-container" role="main">
+        <header class="elden-header">
+            <div class="grace-icon"></div>
+            <h1>Runas de Cálculo</h1>
+            <p class="subtitle">Desvele a Tabuada da Morte Destinada</p>
+            <div class="divider-gold"></div>
+        </header>
+
+        <section class="elden-form-section">
+            <form id="tabuadaForm" autocomplete="off" novalidate>
+                
+                <div class="input-group">
+                    <label for="numero">Runa Base (Número)</label>
+                    <input type="number" id="numero" placeholder="Ex: 9" required aria-required="true">
+                </div>
+
+                <div class="grid-inputs">
+                    <div class="input-group">
+                        <label for="operacao">Encantamento (Operação)</label>
+                        <select id="operacao">
+                            <option value="multiplicacao">Multiplicação (×)</option>
+                            <option value="adicao">Adição (+)</option>
+                            <option value="subtracao">Subtração (−)</option>
+                            <option value="divisao">Divisão (÷)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="limite">Alcance do Feitiço</label>
+                        <input type="number" id="limite" value="10" min="1" max="100">
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn-elden btn-primary" id="btnGerar">
+                        <span>Conjurar</span>
+                    </button>
+                    <button type="button" class="btn-elden btn-secondary" id="btnLimpar">
+                        <span>Dispersar</span>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section id="resultado" class="elden-result-section" aria-live="polite"></section>
+    </main>
+    
+    <script src="script.js" type="module"></script>
+</body>
+</html>

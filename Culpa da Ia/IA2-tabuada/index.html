@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepDive // Netrunner Tabuada Core</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="cyber-grid">
+
+    <canvas id="cyberDeckCanvas"></canvas>
+
+    <div class="glitch-overlay"></div>
+
+    <main class="netrun-interface" role="main">
+        <header class="node-header">
+            <div class="security-status">STATUS: UNDETECTED // JACKED IN</div>
+            <h1 data-text="TABUADA_CORE.EXE">TABUADA_CORE.EXE</h1>
+            <div class="system-bar"><span></span><span></span><span></span></div>
+        </header>
+
+        <section class="icebreaker-form">
+            <form id="cyberForm" autocomplete="off" novalidate>
+                
+                <div class="field-container">
+                    <label for="numero">INPUT_DATA (Número)</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="numero" placeholder="00" required>
+                        <span class="unit-tag">NUM</span>
+                    </div>
+                </div>
+
+                <div class="flex-fields">
+                    <div class="field-container">
+                        <label for="operacao">ALGORITMO</label>
+                        <select id="operacao">
+                            <option value="mult">MULTIPLICAÇÃO [×]</option>
+                            <option value="add">ADIÇÃO [+]</option>
+                            <option value="sub">SUBTRAÇÃO [−]</option>
+                            <option value="div">DIVISÃO [÷]</option>
+                        </select>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="limite">MATRIZ_MAX</label>
+                        <input type="number" id="limite" value="10" min="1" max="50">
+                    </div>
+                </div>
+
+                <div class="action-grid">
+                    <button type="submit" class="btn-cyber b-execute" id="btnGerar">
+                        <span class="btn-text">OVERCLOCK</span>
+                        <span class="glitch-effect"></span>
+                    </button>
+                    <button type="button" class="btn-cyber b-purge" id="btnLimpar">
+                        <span class="btn-text">PURGE</span>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section id="outputTerminal" class="terminal-log" aria-live="assertive"></section>
+    </main>
+    
+    <script src="script.js" type="module"></script>
+</body>
+</html>
